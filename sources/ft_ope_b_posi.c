@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 12:16:56 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/08 15:50:25 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/08 16:56:47 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ void	ft_pb_posi(t_info *info)
 	int	i;
 
 	i = -1;
-	if (info->nbr_pa >= 1)
+	if (info->nbr_pa + 1 >= 1)
 	{
 		save_pa = ft_intdup(info->posi_pa, info->nbr_pa + 1);
 		save_pb = ft_intdup(info->posi_pb, info->nbr_pb - 1);
+		i = -1;
 		free(info->posi_pa);
 		free(info->posi_pb);
 		info->posi_pa = malloc(sizeof(int *) * (info->nbr_pa + 1));

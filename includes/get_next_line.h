@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngeschwi <ngeschwi@stutent.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 15:14:05 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/06 15:14:05 by ngeschwi         ###   ########.fr       */
+/*   Created: 2021/06/08 17:02:33 by ngeschwi          #+#    #+#             */
+/*   Updated: 2021/06/08 17:02:33 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 
-# define BUFFER_SIZE 1024
+# define BUFFER_SIZE 1024 
 
 # define NO_NL -1
 

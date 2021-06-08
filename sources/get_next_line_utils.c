@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngeschwi <ngeschwi@stutent.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 15:17:27 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/06 15:17:27 by ngeschwi         ###   ########.fr       */
+/*   Created: 2021/06/08 17:03:18 by ngeschwi          #+#    #+#             */
+/*   Updated: 2021/06/08 17:03:18 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line.h" 
 #include "push_swap.h"
 
 void	ft_free_if_define(char **str)

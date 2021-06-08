@@ -6,12 +6,12 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 10:55:41 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/02 10:19:27 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/08 17:03:25 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "push_swap.h"
+#include "push_swap.h" 
 
 static int	ft_get_line(char **line, char **str, int index)
 {
