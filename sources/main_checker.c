@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 10:20:11 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/08 17:13:33 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/09 12:33:07 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	if (ft_checker(&info) == ERROR)
-		return (0);
+		return (ERROR);
 	info.what = OK;
 	if (ft_check_sorted(&info) == SORTED)
 		ft_putstr("OK\n", &info);

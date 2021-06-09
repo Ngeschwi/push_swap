@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 14:09:36 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/08 17:02:44 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/09 12:32:26 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@ int	ft_printf_error(void)
 {
 	write(1, "Error\n", 6);
 	return (ERROR);
+}
+
+int	ft_free_error(t_info *info)
+{
+	if (info->pilea)
+		free(info->pilea);
+	if (info->pileb)
+		free(info->pileb);
+	if (info->posi_pa)
+		free(info->posi_pa);
+	if (info->posi_pb)
+		free(info->posi_pb);
+	return (ft_printf_error());
 }
 
 int	ft_check_int(int argc, char **argv)
@@ -50,7 +63,7 @@ int	ft_check_double(t_info *info, int i)
 	while (j < i)
 	{
 		if (info->pilea[i] == info->pilea[j])
-			return (ft_printf_error());
+			return (ft_free_error(info));
 		j++;
 	}
 	return (NO_ERROR);

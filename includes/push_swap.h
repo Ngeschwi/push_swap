@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 13:34:16 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/08 17:01:48 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/09 12:34:11 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_info
 # define OTHER_TIME -1
 # define SAME 1
 # define NOT_SAME -1
-# define END -2
+# define END 1
 # define PUSH 2
 # define CHECKER 1
 # define GEN 0
@@ -52,9 +52,13 @@ typedef struct s_info
 # define INT_MAX 2147483647
 
 void		push_swap(t_info *info);
+int			ft_error(t_info *info, int argc, char **argv);
+int			ft_change_arg(char **argv);
 int			ft_check_int(int argc, char **argv);
 int			ft_check_double(t_info *info, int i);
 int			ft_printf_error(void);
+int			ft_free_error(t_info *info);
+int			ft_get_posi_pa(t_info *info);
 void		ft_push_a(t_info *info);
 void		ft_push_b(t_info *info);
 

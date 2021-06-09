@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 10:32:42 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/08 17:02:41 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/09 12:38:38 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_check(char *line, char *str)
 	while (line[i])
 	{
 		if (line[i] != str[i])
-			return (NOT_SAME);
+			return (NOT_SAME); 
 		i++;
 	}
 	if (str[i])

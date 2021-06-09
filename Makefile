@@ -6,7 +6,7 @@
 #    By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 10:16:43 by ngeschwi          #+#    #+#              #
-#    Updated: 2021/06/08 17:03:43 by ngeschwi         ###   ########.fr        #
+#    Updated: 2021/06/09 11:49:46 by ngeschwi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRCS	= sources/main.c \
 			sources/ft_push_a.c \
 			sources/ft_intdup.c \
 			sources/ft_error.c \
+			sources/ft_change_arg.c \
+			sources/ft_get_posia.c \
 			sources/ft_ope_a.c \
 			sources/ft_ope_b.c \
 			sources/ft_ope_ab.c \
@@ -33,6 +35,7 @@ BONUS	= sources/main_checker.c \
 			sources/get_next_line_utils.c \
 			sources/ft_compare.c \
 			sources/ft_error.c \
+			sources/ft_change_arg.c \
 			sources/ft_ope_a.c \
 			sources/ft_ope_b.c \
 			sources/ft_ope_ab.c \
@@ -50,6 +53,7 @@ NBR_GEN	= sources/main_generete.c \
 			sources/ft_push_a.c \
 			sources/ft_intdup.c \
 			sources/ft_error.c \
+			sources/ft_get_posia.c \
 			sources/ft_ope_a.c \
 			sources/ft_ope_b.c \
 			sources/ft_ope_ab.c \
@@ -76,6 +80,8 @@ CC		= gcc
 RM		= rm -rf
 CFLAGS	= -Wall -Werror -Wextra -g
 
+all:		$(NAME) $(NAMEBNS) $(NAMEGEN)
+
 %.o : %.c
 	${CC} ${CFLAGS} -I./includes -o $@ -c $<
 
@@ -93,8 +99,6 @@ $(OBJS):	includes/push_swap.h
 $(OBJSBNS):	includes/get_next_line.h includes/push_swap.h
 
 $(OBJSGEN):	includes/get_next_line.h includes/push_swap.h
-
-all:		$(NAME) $(NAMEBNS) $(NAMEGEN)
 
 clean:
 		$(RM) $(OBJS) 
