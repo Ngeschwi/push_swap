@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 13:34:16 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/11 11:58:10 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:50:11 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_info
 void		push_swap(t_info *info);
 int			ft_error(t_info *info, int argc, char **argv);
 int			ft_change_arg(t_info *info, char **argv);
+int			ft_get_nbr(char **argv, char **nbr, int i);
 int			ft_check_int(int argc, char **argv);
 int			ft_check_double(t_info *info);
 int			ft_printf_error(void);

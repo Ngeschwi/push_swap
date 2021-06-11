@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:49:08 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/11 12:43:35 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:50:33 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,11 @@ static int	ft_init(t_info *info)
 	return (NO_ERROR);
 }
 
-static int	ft_len_nbr(char **argv, int i)
-{
-	int	len;
-
-	len = 0;
-	if (argv[1][i] == '-')
-	{
-		len++;
-		i++;
-	}
-	while (ft_isdigit(argv[1][i]))
-	{
-		len++;
-		i++;
-	}
-	return (len);
-}
-
 static int	ft_get_pile(t_info *info, char **argv)
 {
 	int		i;
-	int		j;
 	int		h;
 	char	*nbr;
-	int		len;
 
 	i = 0;
 	h = 0;
@@ -57,24 +37,9 @@ static int	ft_get_pile(t_info *info, char **argv)
 		return (ERROR);
 	while (argv[1][i])
 	{
-		j = 0;
 		while (argv[1][i] == ' ')
 			i++;
-		len = ft_len_nbr(argv, i);
-		nbr = malloc(sizeof(char) * (len + 1));
-		if (argv[1][i] == '-')
-		{
-			i++;
-			j++;
-			nbr[0] = '-';
-		}
-		while (ft_isdigit(argv[1][i]))
-		{
-			nbr[j] = argv[1][i];
-			j++;
-			i++;
-		}
-		nbr[j] = '\0';
+		i = ft_get_nbr(argv, &nbr, i);
 		if (ft_atoi(nbr) < INT_MIN || ft_atoi(nbr) > INT_MAX)
 		{
 			free(nbr);
