@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 16:32:01 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/09 12:38:53 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:05:17 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	ft_ra(t_info *info)
 		info->pilea[i - 1] = save_pa[0];
 		info->pilea[i] = '\0';
 		free(save_pa);
+		ft_putstr("ra\n", info);
 		if (info->what == PUSH || info->what == GEN)
 			ft_ra_posi(info);
-		ft_putstr("ra\n", info);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 10:20:11 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/09 12:33:07 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:07:39 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,17 @@ static int	ft_check_sorted(t_info *info)
 		while (i + 1 < info->nbr_pa)
 		{
 			if (info->pilea[i] > info->pilea[i + 1])
+			{
+				free(info->pilea);
+				free(info->pileb);
 				return (NO_SORTED);
+			}
 			i++;
 		}
 	}
+	ft_putstr("OK\n", info);
+	free(info->pilea);
+	free(info->pileb);
 	return (SORTED);
 }
 
@@ -39,7 +46,7 @@ static int	ft_check_line(char *line, t_info *info)
 	else if (!line[0])
 		return (END);
 	else
-		return (ft_printf_error());
+		return (ft_free_error(info, 1));
 }
 
 static int	ft_checker(t_info *info)
@@ -52,15 +59,19 @@ static int	ft_checker(t_info *info)
 	while (get > 0)
 	{
 		if (ft_check_line(line, info) == ERROR)
+		{
+			ft_free_define(&line);
 			return (ERROR);
-		free(line);
-		line = NULL;
+		}
+		ft_free_define(&line);
 		get = get_next_line(0, &line);
 	}
 	if (ft_check_line(line, info) == ERROR)
+	{
+		ft_free_define(&line);
 		return (ERROR);
-	free(line);
-	line = NULL;
+	}
+	ft_free_define(&line);
 	return (NO_ERROR);
 }
 
@@ -80,12 +91,12 @@ static int	ft_get_pilea(t_info *info, char **argv)
 	info->pileb[0] = '\0';
 	info->pilea = malloc(sizeof(int *) * info->nbr_args + 1);
 	if (!info->pilea)
-		return (ft_printf_error());
+		return (ft_free_error(info, 1));
 	while (i <= info->nbr_args)
 	{
 		nbr = ft_atoi(argv[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			return (ft_printf_error());
+			return (ft_free_error(info, 1));
 		info->pilea[i - 1] = (int)nbr;
 		i++;
 	}
@@ -96,28 +107,27 @@ static int	ft_get_pilea(t_info *info, char **argv)
 int	main(int argc, char **argv)
 {
 	t_info	info;
-	int		i;
 
-	if (ft_check_int(argc, argv) == ERROR)
-		return (ERROR);
-	info.nbr_args = argc - 1;
-	if (ft_get_pilea(&info, argv) == ERROR)
-		return (ERROR);
-	i = 0;
-	while (i < info.nbr_pa)
-	{	
-		if (ft_check_double(&info, i) == ERROR)
+	if (argc == 2)
+	{
+		if (ft_change_arg(&info, argv) == ERROR)
 			return (ERROR);
-		i++;
 	}
+	else
+	{
+		if (ft_check_int(argc, argv) == ERROR)
+			return (ERROR);
+		info.nbr_args = argc - 1;
+		if (ft_get_pilea(&info, argv) == ERROR)
+			return (ERROR);
+	}
+	info.what = CHECKER;
+	if (ft_check_double(&info) == ERROR)
+		return (ERROR);
 	if (ft_checker(&info) == ERROR)
 		return (ERROR);
 	info.what = OK;
-	if (ft_check_sorted(&info) == SORTED)
-		ft_putstr("OK\n", &info);
-	else
+	if (ft_check_sorted(&info) == NO_SORTED)
 		ft_putstr("KO\n", &info);
-	free(info.pilea);
-	free(info.pileb);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 14:09:36 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/09 12:32:26 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:12:40 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,27 @@ int	ft_printf_error(void)
 	return (ERROR);
 }
 
-int	ft_free_error(t_info *info)
+void	ft_free_define(char **line)
 {
-	if (info->pilea)
+	if (*line)
+	{
+		free(*line);
+		*line = NULL;
+	}
+}
+
+int	ft_free_error(t_info *info, int	i)
+{
+	if (i == 1 || i == 2)
+	{
 		free(info->pilea);
-	if (info->pileb)
 		free(info->pileb);
-	if (info->posi_pa)
+	}
+	if (i == 2 && info->what != CHECKER)
+	{
 		free(info->posi_pa);
-	if (info->posi_pb)
 		free(info->posi_pb);
+	}
 	return (ft_printf_error());
 }
 
@@ -55,16 +66,22 @@ int	ft_check_int(int argc, char **argv)
 	return (NO_ERROR);
 }
 
-int	ft_check_double(t_info *info, int i)
+int	ft_check_double(t_info *info)
 {
 	int	j;
+	int	i;
 
-	j = 0;
-	while (j < i)
+	i = 0;
+	while (i < info->nbr_pa)
 	{
-		if (info->pilea[i] == info->pilea[j])
-			return (ft_free_error(info));
-		j++;
+		j = 0;
+		while (j < i)
+		{
+			if (info->pilea[i] == info->pilea[j])
+				return (ft_free_error(info, 2));
+			j++;
+		}
+		i++;
 	}
 	return (NO_ERROR);
 }

@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:27:00 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/09 12:18:59 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/11 10:41:12 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_get_posi_pa(t_info *info)
 	info->posi_pb[0] = '\0';
 	info->posi_pa = malloc(sizeof(int *) * (info->nbr_pa + 1));
 	if (!info->posi_pa)
-		return (ft_free_error(info));
+		return (ft_free_error(info, 2));
 	if (info->nbr_args == 2)
 		return (ft_posia_tow(info));
 	while (position < info->nbr_pa)

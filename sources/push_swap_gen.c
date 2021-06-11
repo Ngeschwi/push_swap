@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 13:47:57 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/09 11:30:58 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/11 10:49:29 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	ft_get_min_max(t_info *info)
 int	push_swap_gen(int cmb, int *tab)
 {
 	t_info	info;
+	int		i;
 
 	info.nbr_args = cmb;
 	if (ft_get_pilea(&info, tab) == ERROR)
@@ -66,10 +67,18 @@ int	push_swap_gen(int cmb, int *tab)
 	ft_get_min_max(&info);
 	if (ft_get_posi_pa(&info) == ERROR)
 		return (ERROR);
+	i = 0;
+	while (i < info.nbr_pa)
+	{
+		printf("%d ", info.pilea[i]);
+		i++;
+	}
+	printf("||\n");
 	push_swap(&info);
 	free(info.pilea);
 	free(info.pileb);
 	free(info.posi_pa);
 	free(info.posi_pb);
+	printf("Nous avons eu besion de %d mouvements\n\n", info.count_move);
 	return (info.count_move);
 }

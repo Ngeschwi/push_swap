@@ -6,7 +6,7 @@
 #    By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/07 10:16:43 by ngeschwi          #+#    #+#              #
-#    Updated: 2021/06/09 11:49:46 by ngeschwi         ###   ########.fr        #
+#    Updated: 2021/06/11 12:44:41 by ngeschwi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS	= sources/main.c \
 			sources/ft_intdup.c \
 			sources/ft_error.c \
 			sources/ft_change_arg.c \
+			sources/ft_change_get_pile.c \
 			sources/ft_get_posia.c \
 			sources/ft_ope_a.c \
 			sources/ft_ope_b.c \
@@ -36,6 +37,7 @@ BONUS	= sources/main_checker.c \
 			sources/ft_compare.c \
 			sources/ft_error.c \
 			sources/ft_change_arg.c \
+			sources/ft_change_get_pile.c \
 			sources/ft_ope_a.c \
 			sources/ft_ope_b.c \
 			sources/ft_ope_ab.c \

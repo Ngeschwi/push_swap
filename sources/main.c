@@ -6,7 +6,7 @@
 /*   By: ngeschwi <nathan.geschwind@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 10:44:55 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/06/09 12:33:37 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/06/11 12:37:15 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static int	ft_get_pilea(t_info *info, char **argv)
 	info->pileb[0] = '\0';
 	info->pilea = malloc(sizeof(int *) * info->nbr_pa + 1);
 	if (!info->pilea)
-		return (ft_free_error(info));
+		return (ft_free_error(info, 1));
 	while (i <= info->nbr_pa)
 	{
 		nbr = ft_atoi(argv[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			return (ft_printf_error());
+			return (ft_free_error(info, 1));
 		info->pilea[i - 1] = (int)nbr;
 		i++;
 	}
@@ -68,23 +68,26 @@ static void	ft_free(t_info *info)
 int	main(int argc, char **argv)
 {
 	t_info	info;
-	int		i;
 
-	if (ft_check_int(argc, argv) == ERROR)
-		return (ERROR);
-	info.nbr_args = argc - 1;
-	if (ft_get_pilea(&info, argv) == ERROR)
-		return (ERROR);
+	if (argc == 2)
+	{
+		if (ft_change_arg(&info, argv) == ERROR)
+			return (ERROR);
+	}
+	else
+	{
+		if (ft_check_int(argc, argv) == ERROR)
+			return (ERROR);
+		info.nbr_args = argc - 1;
+		if (ft_get_pilea(&info, argv) == ERROR)
+			return (ERROR);
+	}
+	info.what = PUSH;
 	ft_get_min_max(&info);
 	if (ft_get_posi_pa(&info) == ERROR)
 		return (ERROR);
-	i = 0;
-	while (i < info.nbr_pa)
-	{
-		if (ft_check_double(&info, i) == ERROR)
-			return (ERROR);
-		i++;
-	}
+	if (ft_check_double(&info) == ERROR)
+		return (ERROR);
 	push_swap(&info);
 	ft_free(&info);
 	return (0);
